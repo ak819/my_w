@@ -1,0 +1,111 @@
+@foreach($Properties as $val)  
+<tr>
+    <td><img src="../images/p1.jpg" width="80px" /></td>
+    <td>
+        <div class="row">
+            <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
+                <p class="mb-1 font-wt-500">{{ $val->PropertyTitle }}</p>
+            </div>
+            <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
+                <p class="mb-1">{{ $val->PropertyTitleAr }}</p>
+            </div>
+            <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
+                <p class="mb-1"><i class="material-icons icon-1x color-gray">location_on</i> {{ $val->CommunityName }},{{ $val->CityName }}, Jordan</p>
+            </div>
+            <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
+                <i class="material-icons icon-3x color-gray">king_bed</i>
+                <span>{{ $val->NoBedrooms }}</span>
+
+                <i class="material-icons icon-3x color-gray pl-2">shower</i>
+                <span>{{ $val->NoBathrooms }}</span>
+
+                <i class="material-icons color-gray pl-2">aspect_ratio</i>
+                <span>{{ $val->UnitBuiltupArea }}  {{ $val->UnitMeasure }}</span>
+
+                <i class="material-icons color-gray pl-2">local_atm</i>
+                <span class="font-wt-600">{{ $val->Price }} JOD</span>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                <p class="mb-1 font-wt-500">Property Ref No:</p>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                <p class="mb-1 color-red">{{ $val->PropertyRefNo }}</p>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                <p class="mb-1 font-wt-500">Category:</p>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                <p class="mb-1">{{ $val->CatergoryName }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                <p class="mb-1 font-wt-500">Ad Type:</p>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                @if ($val->AdType==1)
+                <p class="mb-1">Sale</p>
+                @else
+                <p class="mb-1">Rent</p>
+                @endif
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                <p class="mb-1 font-wt-500">Unit Type:</p>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                <p class="mb-1">{{ $val->TypeName }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                <p class="mb-1 font-wt-500">Tenanted:</p>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                <p class="mb-1">{{ $val->Tenanted }}</p>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                <p class="mb-1 font-wt-500">Is Furnished?:</p>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                @if ($val->Furnished)
+                <p class="mb-1">Yes</p>
+                @else
+                <p class="mb-1">No</p>
+                @endif
+               
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                <p class="mb-1 font-wt-500">Last Crawled:</p>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                <p class="mb-1">{{ date('d-m-Y h:i:s a',strtotime($val->CreatedDate)); }}</p>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                <p class="mb-1 font-wt-500">Is Featured?:</p>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                @if ($val->Featured)
+                <p class="mb-1">Yes</p>
+                @else
+                <p class="mb-1">No</p>
+                @endif
+               
+            </div>
+        </div>
+    </td>
+    <td>
+        <a href="" class="btn btn-small btn-gold-lt" title="Edit Details"><i class="material-icons icon-2x">edit</i></a>
+        <!--<a href="" class="btn btn-small btn-red-lt" title="Delete"><i class="material-icons icon-2x">delete_outline</i></a>-->
+    </td> 
+
+    $row[]  ='<img src="../images/p1.jpg" width="80px" />';
+    $row[] =$PropertyHtml;
+    $row[] ='<a href="" class="btn btn-small btn-gold-lt" title="Edit Details"><i class="material-icons icon-2x">edit</i></a>';
+    $Data[]= $row;
+</tr>
+@endforeach

@@ -1,0 +1,483 @@
+@php $PropertyeId=app('request')->input('t');  @endphp
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="collapse" id="collapseExample">
+            <div class="row">
+                @switch($PropertyeId)
+                @case($PropertyeId == " ")
+                @break
+                 @case($PropertyeId==1 || $PropertyeId==9)
+                  <div class="row afilters" id="f-1-9">
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6 ps-2 pe-2">
+                            <select  name="mnbd" class="form-control">
+                                <option value=''>Min Bedroom</option>
+                                @foreach (config('constants.BedRooms') as $key=>$beds)
+                                <option value="{{ $key }}" {{ (app('request')->input('mnbd') == $key)? "selected": "" }}>{{ $beds  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6 ps-2 pe-2">
+                            <select  name="mxbd" class="form-control">
+                                <option value="">Max Bedroom</option>
+                                @foreach (config('constants.BedRooms') as $key=>$beds)
+                                <option value="{{ $key }}" {{ (app('request')->input('mxbd') == $key)? "selected": "" }}>{{ $beds  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6 ps-2 pe-2">
+                            <select  name="mnbt" class="form-control">
+                                <option  value="">Min Bathroom</option>
+                                @foreach (config('constants.BathRooms') as $key=>$baths)
+                                <option value="{{ $key }}" {{ (app('request')->input('mnbt') == $key)? "selected": "" }}>{{ $baths  }}</option> 
+                                @endforeach
+
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6 ps-2 pe-2">
+                            <select name="mxbt" class="form-control">
+                                <option  value="">Max Bathroom</option>
+                                @foreach (config('constants.BathRooms') as $key=>$baths)
+                                <option value="{{ $key }}" {{ (app('request')->input('mxbt') == $key)? "selected": "" }}>{{ $baths  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mnblt" class="form-control" placeholder="Min Built-up area" value="{{ app('request')->input('mnblt') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mxblt" class="form-control" placeholder="Max Built-up area" value="{{ app('request')->input('mxblt') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select name="frsh" class="form-control">
+                                <option   value="">Furnished</option>
+                                @foreach (config('constants.YesNo') as $val)
+                                <option value="{{ $val }}" {{ (app('request')->input('frsh') == $val)? "selected": "" }}>{{ $val  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select  name="swm" class="form-control">
+                                <option value="">{{ __('msg.Swimming Pool') }}</option>
+                                @foreach (config('constants.YesNo') as $val)
+                                <option value="{{ $val }}" {{ (app('request')->input('swm') == $val)? "selected": "" }}>{{ (app()->getLocale()=="ar")? config('constants.YesNoAr.'.$val) :$val  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select name="apt"class="form-control">
+                                <option value="">{{ __('msg.Apartment Type') }}</option>
+                                @foreach (config('constants.ApartmentType') as $apttype)
+                                <option value="{{ $apttype }}" {{ (app('request')->input('apt') == $apttype)? "selected": "" }}>{{ (app()->getLocale()=="ar")? config('constants.ApartmentTypeAr.'.$apttype) :$apttype  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select name="oa" class="form-control">
+                                <option value="">{{ __('msg.Outdoor Area') }}</option>
+                                @foreach (config('constants.YesNo') as $val)
+                                <option value="{{ $val }}" {{ (app('request')->input('oa') == $val)? "selected": "" }}>{{(app()->getLocale()=="ar")? config('constants.YesNoAr.'.$val) :$val  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                 @break
+                  @case($PropertyeId==2)
+                  <div class="row afilters" id="f-2">
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mnplt" class="form-control" placeholder="Min Plot area" value="{{ app('request')->input('mnplt') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mxplt" class="form-control" placeholder="Max Plot area" value="{{ app('request')->input('mnplt') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mnsrt" class="form-control" placeholder="Min Streets" value="{{ app('request')->input('mnsrt') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mxsrt" class="form-control" placeholder="Max Streets" value="{{ app('request')->input('mxsrt') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select name="sv" class="form-control">
+                                <option value="">{{ __('msg.Serviced') }}</option>
+                                @foreach (config('constants.YesNo') as $val)
+                                <option value="{{ $val }}" {{ (app('request')->input('sv') == $val)? "selected": "" }}>{{(app()->getLocale()=="ar")? config('constants.YesNoAr.'.$val) :$val  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select name="rsdt" class="form-control">
+                                <option value="">{{ __('msg.Residential Land Type') }}</option>
+                                @foreach (config('constants.ResidentialLandType') as $reslandtype)
+                                <option value="{{ $reslandtype }}" {{ (app('request')->input('rsdt') == $reslandtype)? "selected": "" }}>{{ (app()->getLocale()=="ar")? config('constants.ResidentialLandTypeAr.'.$reslandtype) :$reslandtype  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mnbpc" class="form-control" placeholder="Min Building %"
+                            value="{{ app('request')->input('mnbpc') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mxbpc" class="form-control" placeholder="Max Building %" value="{{ app('request')->input('mxbpc') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mnfc" class="form-control" placeholder="Min Facade"  value="{{ app('request')->input('mnfc') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mxfc" class="form-control" placeholder="Max Facade" value="{{ app('request')->input('mxfc') }}">
+                        </div>
+                  </div>
+                 @break
+                  @case($PropertyeId==3)
+                  <div class="row afilters" id="f-3">
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mnplt" class="form-control" placeholder="Min Plot area" value="{{ app('request')->input('mnplt') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mxplt" class="form-control" placeholder="Max Plot area" value="{{ app('request')->input('mnplt') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mnsrt" class="form-control" placeholder="Min Streets" value="{{ app('request')->input('mnsrt') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mxsrt" class="form-control" placeholder="Max Streets" value="{{ app('request')->input('mxsrt') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select name="sv" class="form-control">
+                                <option value="">{{ __('msg.Serviced') }}</option>
+                                @foreach (config('constants.YesNo') as $val)
+                                <option value="{{ $val }}" {{ (app('request')->input('sv') == $val)? "selected": "" }}>{{(app()->getLocale()=="ar")? config('constants.YesNoAr.'.$val) :$val  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select name="ct" class="form-control">
+                                <option value="">{{ __('msg.Commercial Type') }}</option>
+                                @foreach (config('constants.CommercialType') as $commtype)
+                                <option value="{{ $commtype }}" {{ (app('request')->input('ct') == $commtype)? "selected": "" }}>{{ (app()->getLocale()=="ar")? config('constants.CommercialTypeAr.'.$commtype) :$commtype }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mnbpc" class="form-control" placeholder="Min Building %" value="{{ app('request')->input('mnbpc') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mxbpc" class="form-control" placeholder="Max Building %" value="{{ app('request')->input('mxbpc') }}" >
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mnfc" class="form-control" placeholder="Min Facade" value="{{ app('request')->input('mnfc') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mxfc" class="form-control" placeholder="Max Facade" value="{{ app('request')->input('mxfc') }}">
+                        </div>
+                  </div>
+                 @break
+                 @case($PropertyeId==4 || $PropertyeId==7 || $PropertyeId==5 || $PropertyeId==10)
+                 <div class="row afilters" id="f-4-5-7-10">
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select name="ft" class="form-control">
+                                <option value="">Fitted</option>
+                                @foreach (config('constants.YesNo') as $val)
+                                <option value="{{ $val }}" {{ (app('request')->input('ft') == $key)? "selected": "" }}>{{ $val  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6 ps-2 pe-2">
+                            <select  name="mnbt" class="form-control">
+                                <option  value="">Min Bathroom</option>
+                                @foreach (config('constants.BathRooms') as $key=>$baths)
+                                <option value="{{ $key }}" {{ (app('request')->input('mnbt') == $key)? "selected": "" }}>{{ $baths  }}</option> 
+                                @endforeach
+
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6 ps-2 pe-2">
+                            <select name="mxbt" class="form-control">
+                                <option  value="">Max Bathroom</option>
+                                @foreach (config('constants.BathRooms') as $key=>$baths)
+                                <option value="{{ $key }}" {{ (app('request')->input('mxbt') == $key)? "selected": "" }}>{{ $baths  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select name="fn" class="form-control">
+                                <option value="">{{ __('msg.Floor Number') }}</option>
+                                @foreach (config('constants.FloorNumber') as $floorNumbers)
+                                <option value="{{ $floorNumbers }}" {{ (app('request')->input('fn') == $floorNumbers)? "selected": "" }}>{{ (app()->getLocale()=="ar")? config('constants.FloorNumberAr'.$floorNumbers) : $floorNumbers  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mnblt" class="form-control" placeholder="Min Built-up area" value="{{ app('request')->input('mnblt') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mxblt" class="form-control" placeholder="Max Built-up area" value="{{ app('request')->input('mxblt') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select name="frsh" class="form-control">
+                                <option   value="">Furnished</option>
+                                @foreach (config('constants.YesNo') as $val)
+                                <option value="{{ $val }}" {{ (app('request')->input('frsh') == $val)? "selected": "" }}>{{ $val  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select name="pl" class="form-control">
+                                <option   value="">Parking</option>
+                                @foreach (config('constants.YesNo') as $val)
+                                <option value="{{ $val }}" {{ (app('request')->input('pl') == $val)? "selected": "" }}>{{ $val  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        @if(app('request')->input('adt') == "Sale")
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select name="rd" class="form-control">
+                                <option   value="">{{ __('msg.Rented') }}</option>
+                                @foreach (config('constants.YesNo') as $val)
+                                <option value="{{ $val }}" {{ (app('request')->input('rd') == $val)? "selected": "" }}>{{ (app()->getLocale()=="ar")? config('constants.YesNoAr'.$val):  $val  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        @endif
+                 </div>
+                @break
+                 @case($PropertyeId==6)
+                 <div class="row afilters" id="f-6">
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6 ps-2 pe-2">
+                            <select  name="mnbd" class="form-control">
+                                <option value=''>Min Bedroom</option>
+                                @foreach (config('constants.BedRooms') as $key=>$beds)
+                                <option value="{{ $key }}"  {{ (app('request')->input('mnbd') == $key)? "selected": "" }}>{{ $beds  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6 ps-2 pe-2">
+                            <select  name="mxbd" class="form-control">
+                                <option value="">Max Bedroom</option>
+                                @foreach (config('constants.BedRooms') as $key=>$beds)
+                                <option value="{{ $key }}" {{ (app('request')->input('mxbd') == $key)? "selected": "" }}>{{ $beds  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6 ps-2 pe-2">
+                            <select  name="mnbt" class="form-control">
+                                <option  value="">Min Bathroom</option>
+                                @foreach (config('constants.BathRooms') as $key=>$baths)
+                                <option value="{{ $key }}" {{ (app('request')->input('mnbt') == $key)? "selected": "" }}>{{ $baths  }}</option> 
+                                @endforeach
+
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6 ps-2 pe-2">
+                            <select name="mxbt" class="form-control">
+                                <option  value="">Max Bathroom</option>
+                                @foreach (config('constants.BathRooms') as $key=>$baths)
+                                <option value="{{ $key }}" {{ (app('request')->input('mxbt') == $key)? "selected": "" }}>{{ $baths  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select name="fn" class="form-control">
+                                <option value="">{{ __('msg.Floor Number') }}</option>
+                                @foreach (config('constants.FloorNumber') as $floorNumbers)
+                                <option value="{{ $floorNumbers }}" {{ (app('request')->input('fn') == $floorNumbers)? "selected": "" }}>{{ (app()->getLocale()=="ar")? config('constants.FloorNumberAr'.$floorNumbers) : $floorNumbers  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mnblt" class="form-control" placeholder="Min Built-up area" value="{{ app('request')->input('mnblt') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mxblt" class="form-control" placeholder="Max Built-up area" value="{{ app('request')->input('mxblt') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mnplt" class="form-control" placeholder="Min Plot area" value="{{ app('request')->input('mnplt') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mxplt" class="form-control" placeholder="Max Plot area" value="{{ app('request')->input('mnplt') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select name="frsh" class="form-control">
+                                <option value="">Furnished</option>
+                                @foreach (config('constants.YesNo') as $val)
+                                <option value="{{ $val }}" {{ (app('request')->input('frsh') == $val)? "selected": "" }}>{{ $val  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select name="pl" class="form-control">
+                                <option   value="">Parking</option>
+                                @foreach (config('constants.YesNo') as $val)
+                                <option value="{{ $val }}" {{ (app('request')->input('pl') == $val)? "selected": "" }}>{{ $val  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select  name="swm" class="form-control">
+                                <option value="">{{ __('msg.Swimming Pool') }}</option>
+                                @foreach (config('constants.YesNo') as $val)
+                                <option value="{{ $val }}" {{ (app('request')->input('swm') == $val)? "selected": "" }}>{{ (app()->getLocale()=="ar")? config('constants.YesNoAr.'.$val) :$val  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select name="vt" class="form-control">
+                                <option value="">{{ __('msg.Villa Type') }}</option>
+                                @foreach (config('constants.VillaType') as $villatype)
+                                <option value="{{ $villatype }}" {{ (app('request')->input('vt') == $villatype)? "selected": "" }}>{{ (app()->getLocale()=="ar")? config('constants.VillaType.'.$villatype) : $villatype  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                 </div>
+                @break
+                 @case($PropertyeId==8)
+                 <div class="row afilters" id="f-8">
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6 ps-2 pe-2">
+                            <select  name="mnbt" class="form-control">
+                                <option  value="">Min Bathroom</option>
+                                @foreach (config('constants.BathRooms') as $key=>$baths)
+                                <option value="{{ $key }}" {{ (app('request')->input('mnbt') == $key)? "selected": "" }}>{{ $baths  }}</option> 
+                                @endforeach
+
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6 ps-2 pe-2">
+                            <select name="mxbt" class="form-control">
+                                <option  value="">Max Bathroom</option>
+                                @foreach (config('constants.BathRooms') as $key=>$baths)
+                                <option value="{{ $key }}" {{ (app('request')->input('mxbt') == $key)? "selected": "" }}>{{ $baths  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select name="fn" class="form-control">
+                                <option value="">{{ __('msg.Floor Number') }}</option>
+                                @foreach (config('constants.FloorNumber') as $floorNumbers)
+                                <option value="{{ $floorNumbers }}" {{ (app('request')->input('fn') == $floorNumbers)? "selected": "" }}>{{ (app()->getLocale()=="ar")? config('constants.FloorNumberAr'.$floorNumbers) : $floorNumbers  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mnblt" class="form-control" placeholder="Min Built-up area" value="{{ app('request')->input('mnblt') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mxblt" class="form-control" placeholder="Max Built-up area" value="{{ app('request')->input('mxblt') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mnplt" class="form-control" placeholder="Min Plot area" value="{{ app('request')->input('mnplt') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mxplt" class="form-control" placeholder="Max Plot area" value="{{ app('request')->input('mnplt') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select name="frsh" class="form-control">
+                                <option value="">Furnished</option>
+                                @foreach (config('constants.YesNo') as $val)
+                                <option value="{{ $val }}" {{ (app('request')->input('frsh') == $val)? "selected": "" }}>{{ $val  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select name="pl" class="form-control">
+                                <option   value="">Parking</option>
+                                @foreach (config('constants.YesNo') as $val)
+                                <option value="{{ $val }}" {{ (app('request')->input('pl') == $val)? "selected": "" }}>{{ $val  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select name="ct" class="form-control">
+                                <option value="">{{ __('msg.Commercial Type') }}</option>
+                                @foreach (config('constants.CommercialType') as $commtype)
+                                <option value="{{ $commtype }}" {{ (app('request')->input('ct') == $commtype)? "selected": "" }}>{{ (app()->getLocale()=="ar")? config('constants.CommercialTypeAr.'.$commtype) :$commtype }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        @if(app('request')->input('adt') == "Sale")
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select name="rd" class="form-control">
+                                <option   value="">{{ __('msg.Rented') }}</option>
+                                @foreach (config('constants.YesNo') as $val)
+                                <option value="{{ $val }}" {{ (app('request')->input('rd') == $val)? "selected": "" }}>{{ (app()->getLocale()=="ar")? config('constants.YesNoAr'.$val):  $val  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        @endif
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select name="bft" class="form-control">
+                                <option value="">{{ __('msg.Building Facade Type') }}</option>
+                                @foreach (config('constants.BuildingFacadeType') as $builfacade)
+                                <option value="{{ $builfacade }}" {{ (app('request')->input('bft') == $builfacade)? "selected": "" }}>{{ (app()->getLocale()=="ar")? config('constants.BuildingFacadeTypeAr.'.$builfacade) : $builfacade  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                 </div>
+                @break
+                 @case($PropertyeId==11)
+                 <div class="row afilters" id="f-11">
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6 ps-2 pe-2">
+                            <select  name="mnbt" class="form-control">
+                                <option  value="">Min Bathroom</option>
+                                @foreach (config('constants.BathRooms') as $key=>$baths)
+                                <option value="{{ $key }}" {{ (app('request')->input('mnbt') == $key)? "selected": "" }}>{{ $baths  }}</option> 
+                                @endforeach
+
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6 ps-2 pe-2">
+                            <select name="mxbt" class="form-control">
+                                <option  value="">Max Bathroom</option>
+                                @foreach (config('constants.BathRooms') as $key=>$baths)
+                                <option value="{{ $key }}" {{ (app('request')->input('mxbt') == $key)? "selected": "" }}>{{ $baths  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select name="fn" class="form-control">
+                                <option value="">{{ __('msg.Floor Number') }}</option>
+                                @foreach (config('constants.FloorNumber') as $floorNumbers)
+                                <option value="{{ $floorNumbers }}" {{ (app('request')->input('fn') == $floorNumbers)? "selected": "" }}>{{ (app()->getLocale()=="ar")? config('constants.FloorNumberAr'.$floorNumbers) : $floorNumbers  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mnblt" class="form-control" placeholder="Min Built-up area" value="{{ app('request')->input('mnblt') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mxblt" class="form-control" placeholder="Max Built-up area" value="{{ app('request')->input('mxblt') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mnplt" class="form-control" placeholder="Min Plot area" value="{{ app('request')->input('mnplt') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <input type="text" name="mxplt" class="form-control" placeholder="Max Plot area" value="{{ app('request')->input('mnplt') }}">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select name="frsh" class="form-control">
+                                <option value="">Furnished</option>
+                                @foreach (config('constants.YesNo') as $val)
+                                <option value="{{ $val }}" {{ (app('request')->input('frsh') == $val)? "selected": "" }}>{{ $val  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select name="pl" class="form-control">
+                                <option   value="">Parking</option>
+                                @foreach (config('constants.YesNo') as $val)
+                                <option value="{{ $val }}" {{ (app('request')->input('pl') == $val)? "selected": "" }}>{{ $val  }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ps-2 pe-2">
+                            <select name="ct" class="form-control">
+                                <option value="">{{ __('msg.Commercial Type') }}</option>
+                                @foreach (config('constants.CommercialType') as $commtype)
+                                <option value="{{ $commtype }}" {{ (app('request')->input('ct') == $commtype)? "selected": "" }}>{{ (app()->getLocale()=="ar")? config('constants.CommercialTypeAr.'.$commtype) :$commtype }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                 </div>
+                @break
+                @endswitch
+            </div>
+        </div>
+    </div>
+</div>
